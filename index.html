@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>STIR Store</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{--o:#ff6600;--bg:#0a0a0c;--tx:#f1f5f9;--mu:#94a3b8}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--tx);font-family:Tahoma,"Segoe UI",Arial,sans-serif}
+body{min-height:100vh;overflow-x:hidden;padding-bottom:40px}
+.glow{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at 0 0,rgba(255,85,0,.2),transparent 45%),radial-gradient(circle at 100% 35%,rgba(255,102,0,.12),transparent 45%),radial-gradient(circle at 50% 100%,rgba(255,102,0,.14),transparent 50%)}
+.wrap{position:relative;z-index:1;max-width:440px;margin:0 auto;padding:20px 20px 0}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.brand{display:flex;align-items:center;gap:12px;cursor:pointer}
+.brand svg{width:44px;height:44px;filter:drop-shadow(0 0 10px rgba(255,102,0,.8))}
+.brand b{font-size:1.25rem;letter-spacing:.2em;font-weight:900;direction:ltr;display:block}
+.brand b i{font-style:normal;color:var(--o);font-size:.75rem;margin-inline-start:6px}
+.brand small{color:var(--mu);font-size:.7rem}
+.lang{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:var(--tx);border-radius:12px;padding:9px 14px;font-weight:700;font-size:.8rem;cursor:pointer}
+.hero{border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:28px 22px;text-align:center;background:radial-gradient(circle at 50% 0,rgba(255,102,0,.28),transparent 60%),linear-gradient(#18181b,#000);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.hero svg{width:84px;height:104px;filter:drop-shadow(0 0 22px rgba(255,102,0,.9));animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+.pill{display:inline-block;margin-top:10px;padding:4px 14px;border-radius:99px;background:rgba(255,102,0,.15);border:1px solid rgba(255,102,0,.4);color:var(--o);font-size:.7rem;font-weight:800;letter-spacing:.2em}
+.hero h2{margin:8px 0 0;font-size:1.5rem;font-weight:900;line-height:1.4}
+.hero h2 span{background:linear-gradient(90deg,#fed7aa,#ff6600,#f97316);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:#cbd5e1;font-size:.8rem;line-height:1.8;margin:12px 0 0}
+.stack{display:grid;gap:12px;margin-top:20px}
+.g{display:flex;align-items:center;gap:14px;width:100%;min-height:68px;padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.06);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.15);color:var(--tx);text-decoration:none;cursor:pointer;font:inherit;text-align:start;transition:.2s}
+.g:hover,.g:active{background:rgba(255,255,255,.12);border-color:rgba(255,102,0,.6);box-shadow:0 0 22px rgba(255,102,0,.2)}
+.g:focus-visible,.lang:focus-visible,.star:focus-visible{outline:3px solid var(--o);outline-offset:2px}
+.ic{flex:none;width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:1.4rem;background:rgba(255,102,0,.2);border:1px solid rgba(255,102,0,.4)}
+.t{flex:1}.t b{display:block;font-size:.95rem;letter-spacing:.04em}.t small{color:var(--mu);font-size:.72rem}
+.chev{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:var(--mu)}
+html[dir=rtl] .chev{transform:scaleX(-1)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.sm{padding:16px 10px;border-radius:18px;text-align:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:var(--tx);font:inherit;cursor:pointer}
+.sm b{display:block;font-size:.75rem;color:#fed7aa;letter-spacing:.08em}.sm small{display:block;color:var(--mu);font-size:.66rem;margin-top:8px}
+.stars{display:flex;justify-content:center;gap:2px;margin-top:8px;direction:ltr}
+.star{background:none;border:0;font-size:2.4rem;color:#475569;cursor:pointer;padding:2px;transition:.15s}
+.star:hover{color:var(--o);text-shadow:0 0 10px rgba(255,102,0,.9);transform:scale(1.2)}
+.sm.rate{grid-column:1/-1}.stars{gap:6px}
+.heart{font-size:1.5rem;margin-top:6px;color:var(--mu)}
+.back{display:inline-flex;gap:8px;align-items:center;margin-bottom:14px;padding:9px 16px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:var(--o);font:inherit;font-size:.8rem;cursor:pointer}
+h3{margin:0 0 4px;font-size:1.2rem}.sub{color:var(--mu);font-size:.8rem;margin:0 0 6px}
+.view{display:none}.view.on{display:block;animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+#sheet{position:fixed;inset:0;z-index:4;background:rgba(0,0,0,.65);display:none;align-items:flex-end}#sheet.on{display:flex}.sh{width:100%;max-width:440px;margin:0 auto;padding:22px 20px 30px;background:#18181b;border:1px solid rgba(255,255,255,.15);border-radius:24px 24px 0 0}.sh h3{margin:0 0 14px}.sh .stack{margin-top:0}.x{margin-top:12px;width:100%;padding:12px;border-radius:12px;background:none;border:1px solid rgba(255,255,255,.14);color:var(--mu);font:inherit;cursor:pointer}
+#toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:5;background:#fff;color:#111;padding:12px 20px;border-radius:12px;font-weight:700;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="wrap">
+<header>
+ <div class="brand" onclick="show('main')">
+  <svg viewBox="0 0 100 125"><defs><linearGradient id="f" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF7A00"/><stop offset=".5" stop-color="#FF5500"/><stop offset="1" stop-color="#E63900"/></linearGradient></defs><path d="M52,5 C55,20 66,28 72,40 C80,56 78,76 65,92 C56,103 44,115 50,123 C38,118 32,104 35,90 C38,76 52,68 55,54 C58,40 48,28 42,42 C32,65 18,72 15,92 C12,70 22,50 34,36 C42,26 48,15 52,5 Z" fill="url(#f)"/><path d="M50,45 C56,55 64,62 62,75 C60,88 48,96 42,108 C38,98 42,88 50,80 C58,72 56,62 50,45 Z" fill="#FF9433" opacity=".8"/></svg>
+  <div><b>STIR<i>STORE</i></b><small data-ar="&#1587;&#1578;&#1608;&#1603; &#1576;&#1585;&#1575;&#1606;&#1583;&#1575;&#1578; &#8226; &#1591;&#1606;&#1591;&#1575;" data-en="Clothing Stock &#8226; Tanta"></small></div>
+ </div>
+</header>
+
+<section class="view on" id="main">
+ <div class="hero">
+  <svg viewBox="0 0 100 125"><path d="M52,5 C55,20 66,28 72,40 C80,56 78,76 65,92 C56,103 44,115 50,123 C38,118 32,104 35,90 C38,76 52,68 55,54 C58,40 48,28 42,42 C32,65 18,72 15,92 C12,70 22,50 34,36 C42,26 48,15 52,5 Z" fill="url(#f)"/><path d="M50,45 C56,55 64,62 62,75 C60,88 48,96 42,108 C38,98 42,88 50,80 C58,72 56,62 50,45 Z" fill="#FF9433" opacity=".8"/></svg><br>
+  <span class="pill">WELCOME</span>
+  <h2 style="direction:ltr">GLOBAL BRANDS.<br><span>EXCEPTIONAL VALUE.</span></h2>
+  <p data-ar="&#1605;&#1575;&#1585;&#1603;&#1575;&#1578; &#1593;&#1575;&#1604;&#1605;&#1610;&#1577;&#1548; &#1580;&#1608;&#1583;&#1577; &#1605;&#1605;&#1610;&#1586;&#1577;&#1548; &#1608;&#1571;&#1587;&#1593;&#1575;&#1585; &#1578;&#1582;&#1604;&#1610;&#1603; &#1578;&#1585;&#1580;&#1593; &#1578;&#1575;&#1606;&#1610;. &#1571;&#1603;&#1578;&#1585; &#1605;&#1606; 20 &#1587;&#1606;&#1577; &#1582;&#1576;&#1585;&#1577; &#1601;&#1610; &#1587;&#1578;&#1608;&#1603; &#1575;&#1604;&#1605;&#1604;&#1575;&#1576;&#1587; &#1575;&#1604;&#1593;&#1575;&#1604;&#1605;&#1610;." data-en="Discover international fashion, exceptional quality, and prices worth coming back for."></p>
+ </div>
+ <div class="stack">
+  <button class="g" onclick="show('social')"><span class="ic">&#128279;</span><span class="t"><b data-ar="&#1608;&#1587;&#1575;&#1574;&#1604; &#1575;&#1604;&#1578;&#1608;&#1575;&#1589;&#1604;" data-en="SOCIAL MEDIA"></b><small>Facebook &bull; TikTok &bull; Instagram &bull; Telegram &bull; Google</small></span><span class="chev">&#8250;</span></button>
+  <button class="g" onclick="show('pay')"><span class="ic">&#128179;</span><span class="t"><b data-ar="&#1591;&#1585;&#1602; &#1575;&#1604;&#1583;&#1601;&#1593;" data-en="PAYMENT METHODS"></b><small>Vodafone Cash &bull; InstaPay</small></span><span class="chev">&#8250;</span></button>
+  <button class="g" onclick="pick('address')"><span class="ic">&#128205;</span><span class="t"><b>ADDRESS</b><small>Our branches</small></span><span class="chev">&#8250;</span></button>
+ </div>
+ <div class="two">
+  <div class="sm rate"><b data-ar="&#1602;&#1610;&#1617;&#1605; &#1575;&#1604;&#1605;&#1578;&#1580;&#1585;" data-en="RATE US"></b>
+   <div class="stars"><button class="star" onclick="rate()" aria-label="1">&#9733;</button><button class="star" onclick="rate()" aria-label="2">&#9733;</button><button class="star" onclick="rate()" aria-label="3">&#9733;</button><button class="star" onclick="rate()" aria-label="4">&#9733;</button><button class="star" onclick="rate()" aria-label="5">&#9733;</button></div>
+   <small data-ar="&#1575;&#1590;&#1594;&#1591; &#1593;&#1604;&#1609; &#1575;&#1604;&#1606;&#1580;&#1608;&#1605; &#1604;&#1604;&#1578;&#1602;&#1610;&#1610;&#1605;" data-en="Tap a star to review us on Google"></small></div>
+  <button class="sm" onclick="show('social')"><b data-ar="&#1578;&#1575;&#1576;&#1593;&#1606;&#1575;" data-en="FOLLOW US"></b><div class="heart">&#9829;</div><small data-ar="&#1575;&#1606;&#1590;&#1605; &#1604;&#1605;&#1580;&#1578;&#1605;&#1593;&#1606;&#1575;" data-en="Tap Follow on every platform"></small></button>
+ </div>
+</section>
+
+<section class="view" id="social">
+ <button class="back" onclick="show('main')">&#8249; <span data-ar="&#1575;&#1604;&#1585;&#1574;&#1610;&#1587;&#1610;&#1577;" data-en="Back to STIR"></span></button>
+ <h3 data-ar="&#1608;&#1587;&#1575;&#1574;&#1604; &#1575;&#1604;&#1578;&#1608;&#1575;&#1589;&#1604;" data-en="Social Media"></h3><p class="sub" data-ar="&#1578;&#1575;&#1576;&#1593;&#1606;&#1575; &#1593;&#1604;&#1609; &#1603;&#1604; &#1575;&#1604;&#1605;&#1606;&#1589;&#1575;&#1578;" data-en="Tap Follow on each platform"></p>
+ <div class="stack">
+  <a class="g" target="_blank" rel="noopener" href="https://www.facebook.com/Stirstore"><span class="ic">f</span><span class="t"><b>Facebook</b><small data-ar="&#1589;&#1601;&#1581;&#1578;&#1606;&#1575; &#1593;&#1604;&#1609; &#1601;&#1610;&#1587;&#1576;&#1608;&#1603;" data-en="Our Facebook page"></small></span><span class="chev">&#8250;</span></a>
+  <a class="g" target="_blank" rel="noopener" href="https://www.tiktok.com/@stir566"><span class="ic">&#9834;</span><span class="t"><b>TikTok</b><small>@stir566</small></span><span class="chev">&#8250;</span></a>
+  <a class="g" target="_blank" rel="noopener" href="https://www.instagram.com/stir_store1/"><span class="ic">&#9711;</span><span class="t"><b>Instagram</b><small>@stir_store1</small></span><span class="chev">&#8250;</span></a>
+  <a class="g" target="_blank" rel="noopener" href="https://t.me/stirstore"><span class="ic">&#9992;</span><span class="t"><b>Telegram</b><small>@stirstore</small></span><span class="chev">&#8250;</span></a>
+  <button class="g" onclick="pick('review')"><span class="ic">G</span><span class="t"><b>Google</b><small>Review us on Google</small></span><span class="chev">&#8250;</span></button>
+ </div>
+</section>
+
+<section class="view" id="pay">
+ <button class="back" onclick="show('main')">&#8249; <span data-ar="&#1575;&#1604;&#1585;&#1574;&#1610;&#1587;&#1610;&#1577;" data-en="Back to STIR"></span></button>
+ <h3 data-ar="&#1591;&#1585;&#1602; &#1575;&#1604;&#1583;&#1601;&#1593;" data-en="Payment Methods"></h3><p class="sub" data-ar="&#1575;&#1582;&#1578;&#1575;&#1585; &#1591;&#1585;&#1610;&#1602;&#1577; &#1575;&#1604;&#1583;&#1601;&#1593;" data-en="Choose how to pay"></p>
+ <div class="stack">
+  <a class="g" target="_blank" rel="noopener" href="https://ipn.eg/S/eissa01000924874/instapay/0DAmh7"><span class="ic">&#128179;</span><span class="t"><b data-ar="&#1573;&#1606;&#1587;&#1578;&#1575; &#1576;&#1575;&#1610;" data-en="InstaPay"></b><small data-ar="&#1575;&#1583;&#1601;&#1593; &#1605;&#1606; &#1571;&#1610; &#1576;&#1606;&#1603;" data-en="Pay from any bank"></small></span><span class="chev">&#8250;</span></a>
+  <a class="g" target="_blank" rel="noopener" href="http://vf.eg/vfcash?id=mt&amp;qrId=iKql4i"><span class="ic">&#128241;</span><span class="t"><b data-ar="&#1601;&#1608;&#1583;&#1575;&#1601;&#1608;&#1606; &#1603;&#1575;&#1588;" data-en="Vodafone Cash"></b><small data-ar="&#1575;&#1583;&#1601;&#1593; &#1605;&#1606; &#1605;&#1581;&#1601;&#1592;&#1578;&#1603;" data-en="Pay from your wallet"></small></span><span class="chev">&#8250;</span></a>
+ </div>
+</section>
+</div>
+<div id="sheet" onclick="if(event.target===this)closeSheet()"><div class="sh"><h3 id="st"></h3><div class="stack" id="sl"></div><button class="x" onclick="closeSheet()">Close</button></div></div>
+<div id="toast"></div>
+<script>
+var lang="en";
+function show(id){var v=document.querySelectorAll(".view");for(var i=0;i<v.length;i++)v[i].classList.remove("on");document.getElementById(id).classList.add("on");window.scrollTo(0,0)}
+function apply(){var d=document.documentElement;d.lang=lang;d.dir=lang=="ar"?"rtl":"ltr";var e=document.querySelectorAll("[data-ar]");for(var i=0;i<e.length;i++)e[i].innerHTML=e[i].getAttribute("data-"+lang)}
+function toggleLang(){lang=lang=="ar"?"en":"ar";apply()}
+function toast(m){var t=document.getElementById("toast");t.textContent=m;t.style.opacity=1;setTimeout(function(){t.style.opacity=0},1800)}
+function soon(){toast(lang=="ar"?"\u0642\u0631\u064a\u0628\u0627\u064b":"Coming soon")}
+function rate(){pick("review")}
+var ADH="https://www.google.com/maps?q=30.8013333,30.9987778",HAS="https://www.google.com/maps/place/Stir+Store/@30.793446,31.0036775,17z/data=!4m8!3m7!1s0x14f7c982e625ab35:0x26f4ed106e31c0ac!8m2!3d30.7934414!4d31.0062524!9m1!1b1!16s%2Fg%2F11r2jdq5lz",BOU="https://g.page/r/Cd8AD5NuGMaaEBM/review";
+var B={review:[["Tanta - Hassan Branch",HAS],["Tanta - Boutros Branch",BOU]],address:[["Tanta - Hassan Branch",ADH],["Tanta - Boutros Branch",null]]};
+function pick(t){var l=document.getElementById("sl");document.getElementById("st").textContent=t=="review"?"Choose a branch to review":"Choose a branch";l.innerHTML="";B[t].forEach(function(b){var e;if(b[1]){e=document.createElement("a");e.href=b[1];e.target="_blank";e.rel="noopener"}else{e=document.createElement("button");e.onclick=function(){soon()}}e.className="g";e.innerHTML='<span class="ic">&#128205;</span><span class="t"><b></b></span><span class="chev">&#8250;</span>';e.querySelector("b").textContent=b[0];l.appendChild(e)});document.getElementById("sheet").classList.add("on")}
+function closeSheet(){document.getElementById("sheet").classList.remove("on")}
+apply();
+</script>
+</body>
+</html>
